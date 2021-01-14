@@ -1,0 +1,15 @@
+html
+{
+    box-sizing: border-box;
+    font-family: 'Lato', sans-serif;
+}
+*, ::after, ::before 
+{
+    box-sizing: inherit;
+}
+.body{
+    background:linen
+}
+.todo__List{
+    list-style-type: none;
+}
