@@ -1,43 +1,67 @@
 let tasks = [];
 
 const form = document.querySelector(".form");
-const todoButton = document.querySelector(".todo-button");
-const todoList = document.querySelector(".todo-list")
+const todoButton = document.querySelector(".todo__Button");
+const todoList = document.querySelector(".todo__List")
 
-const addNewTask = (newContent) =>{
-    tasks.push(newContent)
+    const addNewTask = (newContent) =>
+    {
+        tasks = 
+        [
+            ...tasks,
+            { content: newContent },
+        ]
+        renderTasks()
+    }
+
+    const removeTask = (index) =>
+    {
+        tasks =
+        [
+            ...tasks.slice(0,index),
+            ...tasks.slice(index +1),   
+        ]
+        renderTasks();
+        renderButtons();
+    }
+
+const renderTasks = () => {
+    const taskHtml = task =>`
+        <li class="todo__Item">
+            <button class="todo__DoneButton">
+            <i class="fas fa-check"></i>
+            </button>
+            <span class="todo__Content">
+                ${task.content}
+            <span>
+            <button class="todo__TrashButton">
+                <i class="fas fa-trash"></i>
+            </button>
+        </li>
+    `;
+    const taskElement = document.querySelector(".todo__List");
+    taskElement.innerHTML = tasks.map(taskHtml).join("");
+}
+
+const renderButtons = () =>{
+    const removeButton = document.querySelectorAll(".todo__TrashButton")
+    removeButton.forEach((removedButton, index) => {
+        removedButton.addEventListener("click", () => {
+            removeTask(index)
+        })
+    })
+    
 }
 const onFormSubmit = form.addEventListener("submit",(event)=>{
     event.preventDefault();
-    const newContent = document.querySelector(".input-todo").value.trim();
+    const newContent = document.querySelector(".todo__Input").value.trim();
 
     if(newContent === "")
     return;
     else{
         form.reset();
     }
-    addNewTask(newContent) 
-    liTodo()  
+    addNewTask(newContent)  
+    renderTasks();
+    renderButtons()
 })
-
-const liTodo = () =>{
-    const todoDiv = document.createElement("div") 
-    todoDiv.classList.add("todo");
-
-    const newTodo = document.createElement("li")
-    newTodo.classList.add("todo-item")
-    todoDiv.appendChild(newTodo)
-
-    const doneButton = document.createElement("button")
-    doneButton.innerHTML = "<i class='fas fa-check'></i>";
-    doneButton.classList.add("complete-btn")
-    todoDiv.appendChild(doneButton)
-
-    const trashButton = document.createElement("button")
-    trashButton.innerHTML = "<i class='fas fa-trash'></i>";
-    trashButton.classList.add("complete-btn")
-    todoDiv.appendChild(trashButton)
-
-    todoList.appendChild(todoDiv)
-    newTodo.innerHTML = tasks
-}
