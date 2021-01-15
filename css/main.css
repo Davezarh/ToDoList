@@ -13,3 +13,6 @@ html
 .todo__List{
     list-style-type: none;
 }
+.todo__Content--done{
+    text-decoration: line-through;
+}
