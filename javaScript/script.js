@@ -1,67 +1,87 @@
 let tasks = [];
-
-const form = document.querySelector(".form");
-const todoButton = document.querySelector(".todo__Button");
-const todoList = document.querySelector(".todo__List")
-
-    const addNewTask = (newContent) =>
-    {
+    const addNewTask = (newContent) =>{
         tasks = 
         [
             ...tasks,
             { content: newContent },
         ]
-        renderTasks()
+        render()
     }
-
-    const removeTask = (index) =>
-    {
+    const removeTask = (index) =>{
         tasks =
         [
             ...tasks.slice(0,index),
             ...tasks.slice(index +1),   
         ]
-        renderTasks();
-        renderButtons();
+        render()
     }
-
-const renderTasks = () => {
-    const taskHtml = task =>`
-        <li class="todo__Item">
+    const toggleTaskDone = (index) =>{
+       tasks = [
+            ...tasks.slice(0,index), 
+            {   ...tasks[index],
+                done: !tasks[index].done
+            }, 
+            ...tasks.slice(index + 1), 
+        ]
+        render()
+    }
+    const renderTasks = () => {
+        const taskHtml = task =>`
+         <li class="todo__Item">
             <button class="todo__DoneButton">
             <i class="fas fa-check"></i>
             </button>
-            <span class="todo__Content">
+            <span class="todo__Content ${task.done ? "todo__Content--done" : ""}">
                 ${task.content}
             <span>
             <button class="todo__TrashButton">
                 <i class="fas fa-trash"></i>
             </button>
-        </li>
-    `;
+         </li>
+        `;
     const taskElement = document.querySelector(".todo__List");
     taskElement.innerHTML = tasks.map(taskHtml).join("");
-}
-
-const renderButtons = () =>{
-    const removeButton = document.querySelectorAll(".todo__TrashButton")
-    removeButton.forEach((removedButton, index) => {
-        removedButton.addEventListener("click", () => {
+    }
+    const renderButtons = () =>{
+        const removeButton = document.querySelectorAll(".todo__TrashButton")
+        removeButton.forEach((removedButton, index) => {
+         removedButton.addEventListener("click", () => {
             removeTask(index)
         })
     })
+    const doneButton = document.querySelectorAll(".todo__DoneButton")
+        doneButton.forEach((buttonDone,index)=>{
+            buttonDone.addEventListener("click",()=>{
+                toggleTaskDone(index)
+            })
+        })
     
-}
-const onFormSubmit = form.addEventListener("submit",(event)=>{
-    event.preventDefault();
-    const newContent = document.querySelector(".todo__Input").value.trim();
-
-    if(newContent === "")
-    return;
-    else{
-        form.reset();
     }
-    addNewTask(newContent)  
-    renderTasks();
-    renderButtons()
-})
+    const render = () =>{
+        renderTasks()
+        renderButtons()
+    }
+    const formReset = () =>{
+        document.querySelector(".form").reset()
+   }
+    const onFormSubmit = (event) => {
+        event.preventDefault();
+        const newContent = document.querySelector(".todo__Input").value.trim();
+       
+         if(newContent === ""){
+            return; 
+         }
+            else{
+                formReset()
+             }
+        addNewTask(newContent)  
+        render()
+    }
+    const init = () => {
+        render()
+        const form = document.querySelector(".form");
+
+        form.addEventListener("submit",onFormSubmit)  
+    }
+
+init();
