@@ -24,19 +24,22 @@ let tasks = [];
             ...tasks.slice(index + 1), 
         ]
         render()
+        
     }
     const renderTasks = () => {
         const taskHtml = task =>`
          <li class="todo__Item">
+            <span class="todo__Content ${task.done ? "todo__Content--done" : ""}">
+                ${task.content}
+            </span>
+                <span class="todo__Buttons">
             <button class="todo__DoneButton">
             <i class="fas fa-check"></i>
             </button>
-            <span class="todo__Content ${task.done ? "todo__Content--done" : ""}">
-                ${task.content}
-            <span>
             <button class="todo__TrashButton">
                 <i class="fas fa-trash"></i>
             </button>
+                </span>
          </li>
         `;
     const taskElement = document.querySelector(".todo__List");
@@ -63,7 +66,7 @@ let tasks = [];
     }
     const formReset = () =>{
         document.querySelector(".form").reset()
-   }
+    }
     const onFormSubmit = (event) => {
         event.preventDefault();
         const newContent = document.querySelector(".todo__Input").value.trim();
@@ -73,8 +76,9 @@ let tasks = [];
          }
             else{
                 formReset()
-             }
+             } 
         addNewTask(newContent)  
+        localStorage.setItem("tasks",JSON.stringify(tasks)) 
         render()
     }
     const init = () => {
@@ -84,4 +88,5 @@ let tasks = [];
         form.addEventListener("submit",onFormSubmit)  
     }
 
+    
 init();
