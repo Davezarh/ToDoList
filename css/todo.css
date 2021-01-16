@@ -1,0 +1,58 @@
+.todo__Button{
+    color:rgba(0, 38, 255, 0.932);
+    cursor:pointer;
+    transition: 0.3s ease;
+}
+.todo__Button:hover{
+    color:white;
+    background:rgba(0, 98, 128, 0.384);
+}
+.todo__Button, .todo__Input{
+    background:white;
+    outline:none;
+    border:none;
+    padding:10px;
+    font-size: 20px;
+}
+.todo__Container{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.todo__List{
+    min-width: 24%;
+    list-style-type: none;
+}
+.todo__Item{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    background:white;
+    margin:5px;
+}
+.todo__Content{
+    line-break: anywhere;
+    display:flex; 
+    align-items: center;
+    letter-spacing: 0,5px;
+}
+.todo__Content--done{
+    text-decoration: line-through;
+}
+.todo__Buttons{
+    display: flex; 
+}
+.todo__DoneButton{
+    background:green;
+    color:white;
+    cursor:pointer;
+    outline:none;
+    border:none;
+}
+.todo__TrashButton{
+    background:red;
+    color:white;
+    cursor:pointer;
+    outline:none;
+    border:none;
+}
