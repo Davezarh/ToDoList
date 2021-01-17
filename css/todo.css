@@ -30,6 +30,9 @@
     background:white;
     margin:5px;
 }
+.todo__Item--Done{
+   opacity :0.5 
+}
 .todo__Content{
     line-break: anywhere;
     display:flex; 
