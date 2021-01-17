@@ -28,7 +28,7 @@ let tasks = [];
     }
     const renderTasks = () => {
         const taskHtml = task =>`
-         <li class="todo__Item">
+         <li class="todo__Item ${task.done ? "todo__Item--Done" : ""}">
             <span class="todo__Content ${task.done ? "todo__Content--done" : ""}">
                 ${task.content}
             </span>
@@ -84,7 +84,6 @@ let tasks = [];
     const init = () => {
         render()
         const form = document.querySelector(".form");
-
         form.addEventListener("submit",onFormSubmit)  
     }
 
