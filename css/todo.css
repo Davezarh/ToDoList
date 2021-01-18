@@ -30,8 +30,8 @@
     background:white;
     margin:5px;
 }
-.todo__Item--Done{
-   opacity :0.5 
+.todo__Item--Done{ 
+    display:none;
 }
 .todo__Content{
     line-break: anywhere;
