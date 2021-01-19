@@ -51,12 +51,14 @@ let hideTasksDone = false;
             </span>
                 <span class="todo__Buttons">
             <button class="todo__DoneButton">
-            <i class="fas fa-check"></i>
+                <i class="fas fa-check"></i>
             </button>
             <button class="todo__TrashButton">
                 <i class="fas fa-trash"></i>
             </button>
-                </span>
+            <button class="todo__EditButton">
+                <i class="fas fa-edit"></i>
+            </button>
          </li>
         `;
     const taskElement = document.querySelector(".todo__List");
@@ -92,9 +94,17 @@ let hideTasksDone = false;
     const hideDoneButton = document.querySelector(".hideDoneTasks")
     if(hideDoneButton)
     { hideDoneButton.addEventListener("click",hideDoneTasks) }
-    
+
+    const editButton = document.querySelector(".todo__EditButton")
+    if(editButton){
+        editButton.addEventListener("click",()=>{
+            const taskElement = document.querySelector(".todo__Content");
+            taskElement.contentEditable=true;
+        })
     }
-   
+    
+     }
+
     const formReset = () =>{
         document.querySelector(".form").reset()
     }
@@ -107,7 +117,6 @@ let hideTasksDone = false;
         const resetButton = document.querySelector(".todo__Button")
         resetButton.addEventListener("click",focusInput)
     }
-
     const render = () => {
         renderTasks()
         renderButtons()
@@ -117,7 +126,6 @@ let hideTasksDone = false;
     const onFormSubmit = (event) => {
         event.preventDefault();
         const newContent = document.querySelector(".todo__Input").value.trim();
-       
          if(newContent === ""){ return; }
             else{ formReset() } 
 
