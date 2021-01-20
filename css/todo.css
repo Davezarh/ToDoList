@@ -41,6 +41,7 @@
 }
 .todo__Content--done{
     text-decoration: line-through;
+    color:red;
 }
 .todo__Buttons{
     display: flex; 
@@ -59,10 +60,9 @@
     outline:none;
     border:none;
 }
-.todo__EditButton{
-    cursor:pointer;
+.markAllDone, .hideDoneTasks {
     outline:none;
     border:none;
-    background:black;
-    color:white;
+    background: none;
+    color:wheat
 }
