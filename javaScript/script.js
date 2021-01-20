@@ -42,7 +42,7 @@ let hideTasksDone = false;
         hideTasksDone =! hideTasksDone;   
         render();
     }
-
+  
     const renderTasks = () => {
         const taskHtml = task =>`
          <li class="todo__Item ${task.done && hideTasksDone ? "todo__Item--Done": ""}">
@@ -55,9 +55,6 @@ let hideTasksDone = false;
             </button>
             <button class="todo__TrashButton">
                 <i class="fas fa-trash"></i>
-            </button>
-            <button class="todo__EditButton">
-                <i class="fas fa-edit"></i>
             </button>
          </li>
         `;
@@ -92,23 +89,12 @@ let hideTasksDone = false;
     if(markDoneButton){ markDoneButton.addEventListener("click",markAllDone) }
 
     const hideDoneButton = document.querySelector(".hideDoneTasks")
-    if(hideDoneButton)
-    { hideDoneButton.addEventListener("click",hideDoneTasks) }
-
-    const editButton = document.querySelector(".todo__EditButton")
-    if(editButton){
-        editButton.addEventListener("click",()=>{
-            const taskElement = document.querySelector(".todo__Content");
-            taskElement.contentEditable=true;
-        })
-    }
-    
-     }
+    if(hideDoneButton){ hideDoneButton.addEventListener("click",hideDoneTasks) }
+     }  
 
     const formReset = () =>{
         document.querySelector(".form").reset()
     }
-
     const focusInput = () => {
         const input = document.querySelector(".todo__Input")
         input.focus();
