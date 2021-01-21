@@ -1,3 +1,4 @@
+
 let tasks = [];
 let hideTasksDone = false;
 
@@ -43,6 +44,18 @@ let hideTasksDone = false;
         render();
     }
   
+    const countTasks = () =>{
+        const totalTasks = tasks.length
+        const complatedTasks = tasks.filter((task) => task.done === true)
+        const complatedTasksCount = complatedTasks.length
+        const remainingTasks = totalTasks - complatedTasksCount;
+        document.querySelector(".totalTasks").innerText = `Ilość zadań: ${totalTasks}`
+        document.querySelector(".complatedTasks").innerText = `
+        Ukończone zadania: ${complatedTasksCount}`
+        document.querySelector(".remainingTasks").innerText =`
+        Pozostałe zadania: ${remainingTasks}`
+    }
+    
     const renderTasks = () => {
         const taskHtml = task =>`
          <li class="todo__Item ${task.done && hideTasksDone ? "todo__Item--Done": ""}">
@@ -106,6 +119,7 @@ let hideTasksDone = false;
     const render = () => {
         renderTasks()
         renderButtons()
+        countTasks()
         bindEvents()
         resetInput()
     }
