@@ -45,15 +45,16 @@ let hideTasksDone = false;
     }
   
     const countTasks = () =>{
+        if(!tasks.length){
+            return;
+        }
         const totalTasks = tasks.length
         const complatedTasks = tasks.filter((task) => task.done === true)
         const complatedTasksCount = complatedTasks.length
         const remainingTasks = totalTasks - complatedTasksCount;
-        document.querySelector(".totalTasks").innerText = `Ilość zadań: ${totalTasks}`
-        document.querySelector(".complatedTasks").innerText = `
-        Ukończone zadania: ${complatedTasksCount}`
-        document.querySelector(".remainingTasks").innerText =`
-        Pozostałe zadania: ${remainingTasks}`
+        document.querySelector(".todo__TotalTasks").innerText = `Zadania: ${totalTasks}`
+        document.querySelector(".todo__ComplatedTasks").innerText = `Ukończone: ${complatedTasksCount}`
+        document.querySelector(".todo__RemainingTasks").innerText =`Pozostało: ${remainingTasks}`
     }
     
     const renderTasks = () => {
@@ -80,8 +81,8 @@ let hideTasksDone = false;
         if(!tasks.length){ buttons.innerHTML = ""; return; }
 
         buttons.innerHTML=`
-        <button class ="markAllDone" ${tasks.every(({done}) => done ) ?"disabled" :""}>Ukończ wszystkie</button>
-        <button class ="hideDoneTasks"> ${hideTasksDone ? "Pokaż" : "Ukryj"} ukończone</button>
+        <button class ="todo__MarkAllDone" ${tasks.every(({done}) => done ) ?"disabled" :""}>Ukończ wszystkie</button>
+        <button class ="todo__HideDoneTasks"> ${hideTasksDone ? "Pokaż" : "Ukryj"} ukończone</button>
         `
     }
     const bindEvents = () =>{
@@ -98,15 +99,15 @@ let hideTasksDone = false;
             })
         })
 
-    const markDoneButton = document.querySelector(".markAllDone")
+    const markDoneButton = document.querySelector(".todo__MarkAllDone")
     if(markDoneButton){ markDoneButton.addEventListener("click",markAllDone) }
 
-    const hideDoneButton = document.querySelector(".hideDoneTasks")
+    const hideDoneButton = document.querySelector(".todo__HideDoneTasks")
     if(hideDoneButton){ hideDoneButton.addEventListener("click",hideDoneTasks) }
      }  
 
     const formReset = () =>{
-        document.querySelector(".form").reset()
+        document.querySelector(".todo__Form").reset()
     }
     const focusInput = () => {
         const input = document.querySelector(".todo__Input")
@@ -135,7 +136,7 @@ let hideTasksDone = false;
 
     const init = () => {
         render()
-        const form = document.querySelector(".form");
+        const form = document.querySelector(".todo__Form");
         form.addEventListener("submit",onFormSubmit)  
     }
 
