@@ -1,50 +1,84 @@
+.todo{
+    background-image: linear-gradient(90deg,rgba(250, 72, 1, 0.541),rgba(255, 0, 0, 0.534));
+    min-height: 100vh;
+    display:grid;
+    grid-template-columns: minmax(300px,auto);
+    grid-template-rows:minmax(50px,auto);
+    justify-content: center;
+    align-content:center;
+}
+.todo__SectionHeader{
+    background:rgba(233, 236, 238, 0.548);
+    border-radius: 3px;
+}
+.todo__Header{
+    text-align: center;
+    margin-bottom:10px;
+    margin-top:10px;
+    color:red;
+}
+.todo__Input{
+    margin-left:12px;
+    margin-top:4px;
+    width:85%;
+    border:1px solid red;
+    outline:none;
+}
 .todo__Button{
-    color:rgba(0, 38, 255, 0.932);
     cursor:pointer;
     transition: 0.3s ease;
+    background:transparent;
+    border:none;
+    outline:none;
 }
 .todo__Button:hover{
     color:white;
-    background:rgba(0, 98, 128, 0.384);
-}
-.todo__Button, .todo__Input{
-    background:white;
-    outline:none;
-    border:none;
-    padding:10px;
-    font-size: 20px;
-}
-.todo__Container{
-    display:flex;
-    justify-content: center;
-    align-items: center;
+    background:rgb(128, 0, 0);
+    border-radius: 2px;
 }
 .todo__List{
-    min-width: 24%;
     list-style-type: none;
+    padding-inline-start:15px;
 }
 .todo__Item{
-    display:flex;
-    justify-content: space-between;
-    align-items: center;
-    background:white;
-    margin:5px;
+    display: flex;
+    justify-content:space-between;
+    background: rgb(255, 255, 255);
+    margin-bottom:5px;
+    margin-right:10px;
 }
 .todo__Item--Done{ 
     display:none;
 }
+.todo__Buttons{
+    display:flex;
+    justify-content: center;
+    margin-top:7px;
+}
+.todo__ButtonsContent{
+     display:flex;
+}
 .todo__Content{
     line-break: anywhere;
-    display:flex; 
-    align-items: center;
     letter-spacing: 0,5px;
 }
 .todo__Content--done{
     text-decoration: line-through;
     color:red;
 }
-.todo__Buttons{
-    display: flex; 
+.todo__CountTasks{
+    margin:5px 5px;
+    padding-bottom:5px;
+    color:red;
+    text-align: center;
+    font-size: 15px;
+}
+.todo__MarkAllDone, .todo__HideDoneTasks{
+    font-size: 15px;
+    color:red;
+    outline: none;
+    border:none;
+    background: none;
 }
 .todo__DoneButton{
     background:green;
@@ -59,10 +93,4 @@
     cursor:pointer;
     outline:none;
     border:none;
-}
-.markAllDone, .hideDoneTasks {
-    outline:none;
-    border:none;
-    background: none;
-    color:wheat
 }
