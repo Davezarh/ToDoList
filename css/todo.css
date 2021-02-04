@@ -81,14 +81,14 @@
     background: none;
 }
 .todo__DoneButton{
-    background:green;
+    background:rgba(0, 128, 0, 0.637);
     color:white;
     cursor:pointer;
     outline:none;
     border:none;
 }
 .todo__TrashButton{
-    background:red;
+    background:rgba(255, 0, 0, 0.637);
     color:white;
     cursor:pointer;
     outline:none;
