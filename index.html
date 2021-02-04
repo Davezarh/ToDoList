@@ -16,26 +16,28 @@
     <script src="javaScript/script.js" defer></script>
     <title>TO-DO LIST</title>
 </head>
-<body class="body">
-<main class="main">
-    <header class="header">
+<body>
+    <main class="todo">
+    <section class="todo__SectionHeader">
+        <header class="todo__Header">
         TO-DO LIST
-    </header>
-    <section>
-        <span class="totalTasks"></span>
-        <span class="complatedTasks"></span>
-        <span class="remainingTasks"></span>
+        </header>
+            <form class="todo__Form">
+                <input type="text" class="todo__Input" placeholder="Co jest do zrobienia?">
+                <button class="todo__Button">
+                    <i class="fas fa-plus-square"></i>
+                </button>
+            </form>
+            <section class="todo__Container">
+                <span class="todo__Buttons"></span>
+                <ul class="todo__List"></ul>
+                <section  class="todo__CountTasks">
+                    <span class="todo__TotalTasks"></span>
+                    <span class="todo__ComplatedTasks"></span>
+                    <span class="todo__RemainingTasks"></span>
+                </section>
+            </section>
     </section>
-    <form class="form">
-        <input type="text" class="todo__Input" placeholder="Co jest do zrobienia?">
-        <button class="todo__Button">
-            <i class="fas fa-plus-square"></i>
-        </button>
-    </form>
-    <div class="todo__Container">
-        <span class="todo__Buttons"></span>
-        <ul class="todo__List"></ul>
-    </div>
-</main>
+    </main>
 </body>
 </html>
