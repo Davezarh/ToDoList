@@ -1,8 +1,8 @@
 .todo{
-    background-image: linear-gradient(90deg,rgba(250, 72, 1, 0.541),rgba(255, 0, 0, 0.534));
+    background-image: linear-gradient(45deg, rgba(118, 6, 163, 0.623) 25% , rgba(255, 0, 0, 0.288) 75%);
     min-height: 100vh;
     display:grid;
-    grid-template-columns: minmax(300px,auto);
+    grid-template-columns: minmax(500px,auto);
     grid-template-rows:minmax(50px,auto);
     justify-content: center;
     align-content:center;
@@ -15,14 +15,16 @@
     text-align: center;
     margin-bottom:10px;
     margin-top:10px;
-    color:red;
+    color:teal;
+    font-size: 25px;
 }
+
 .todo__Input{
     margin-left:12px;
-    margin-top:4px;
-    width:85%;
-    border:1px solid red;
+    width:83%;
+    border:1px solid teal;
     outline:none;
+    font-size:25px;
 }
 .todo__Button{
     cursor:pointer;
@@ -33,8 +35,8 @@
 }
 .todo__Button:hover{
     color:white;
-    background:rgb(128, 0, 0);
-    border-radius: 2px;
+    background:rgba(0, 128, 85, 0.664);
+    border-radius: 1px;
 }
 .todo__List{
     list-style-type: none;
@@ -60,7 +62,8 @@
 }
 .todo__Content{
     line-break: anywhere;
-    letter-spacing: 0,5px;
+    letter-spacing: 0.5px;
+    font-size: 25px;
 }
 .todo__Content--done{
     text-decoration: line-through;
@@ -69,13 +72,15 @@
 .todo__CountTasks{
     margin:5px 5px;
     padding-bottom:5px;
-    color:red;
+    color:teal;
     text-align: center;
-    font-size: 15px;
+    font-size: 25px;
+    word-break: break-word;
+    letter-spacing: 0.5px;
 }
 .todo__MarkAllDone, .todo__HideDoneTasks{
-    font-size: 15px;
-    color:red;
+    font-size: 25px;
+    color:teal;
     outline: none;
     border:none;
     background: none;
@@ -86,6 +91,10 @@
     cursor:pointer;
     outline:none;
     border:none;
+    transition: 0.3s ease-in-out;
+}
+.todo__DoneButton:hover{
+    transform: scale(1.2);
 }
 .todo__TrashButton{
     background:rgba(255, 0, 0, 0.637);
@@ -93,4 +102,46 @@
     cursor:pointer;
     outline:none;
     border:none;
+    transition: 0.3s ease-in-out;
+}
+.todo__TrashButton:hover{
+    transform: scale(1.2);
+}
+@media (max-width:450px){
+    .todo{
+        grid-template-columns: 100%;
+    }
+    .todo__Input{
+        width:80%;
+        font-size:23px;
+    }
+}
+@media (min-width:451px) and (max-width:540px){
+    .todo{
+        grid-template-columns:80%;
+    }
+}
+@media(min-width:541px ) and (max-width:768px){
+    .todo{
+        grid-template-columns: 75%;
+    }
+    .todo__Input{
+        width:86%;
+    }
+}
+@media(min-width:769px) and (max-width:1024px){
+    .todo{
+        grid-template-columns: 65%;
+    }
+    .todo__Input{
+        width:88%
+    }
+}
+@media(min-width:1025px) and (max-width:1200px){
+    .todo{
+        grid-template-columns: 57%;
+    }
+    .todo__Input{
+        width:90%
+    }
 }
