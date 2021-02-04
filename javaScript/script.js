@@ -6,11 +6,10 @@ let hideTasksDone = false;
         tasks = 
         [
             ...tasks,
-            { content: newContent },
+            { content: newContent},
         ]
         render()
     }
-
     const removeTask = (index) =>{
         tasks =
         [
@@ -19,9 +18,15 @@ let hideTasksDone = false;
         ]
         render()
     }
-
+    /*const local = ()=>{ 
+        if(!localStorage.getItem("tasks") || JSON.parse(localStorage.getItem("tasks")).length ===0){  //This feature doesn't work well yet.
+            localStorage.setItem("tasks",JSON.stringify(tasks))
+        }
+    }
+    */
     const toggleTaskDone = (index) =>{
-       tasks = [
+       tasks = 
+        [
             ...tasks.slice(0,index), 
             {   ...tasks[index],
                 done: !tasks[index].done
@@ -29,8 +34,7 @@ let hideTasksDone = false;
             ...tasks.slice(index + 1), 
         ]
         render()
-     }
-
+    }
     const markAllDone = () =>{
        tasks = tasks.map((task)=> ({
             ...task,
@@ -38,12 +42,10 @@ let hideTasksDone = false;
           }))   
         render();
     }
-
     const hideDoneTasks = () =>{
         hideTasksDone =! hideTasksDone;   
         render();
     }
-  
     const countTasks = () =>{
         if(!tasks.length){
             return;
@@ -52,24 +54,26 @@ let hideTasksDone = false;
         const complatedTasks = tasks.filter((task) => task.done === true)
         const complatedTasksCount = complatedTasks.length
         const remainingTasks = totalTasks - complatedTasksCount;
-        document.querySelector(".todo__TotalTasks").innerText = `Zadania: ${totalTasks}`
-        document.querySelector(".todo__ComplatedTasks").innerText = `Ukończone: ${complatedTasksCount}`
-        document.querySelector(".todo__RemainingTasks").innerText =`Pozostało: ${remainingTasks}`
+        document.querySelector(".todo__TotalTasks").innerText = `Zadania:${totalTasks}`
+        document.querySelector(".todo__ComplatedTasks").innerText = `Ukończone:${complatedTasksCount}`
+        document.querySelector(".todo__RemainingTasks").innerText =`Pozostało:${remainingTasks}`
     }
-    
+
+
     const renderTasks = () => {
         const taskHtml = task =>`
          <li class="todo__Item ${task.done && hideTasksDone ? "todo__Item--Done": ""}">
             <span class="todo__Content ${task.done ? "todo__Content--done" : ""}">
                 ${task.content}
             </span>
-                <span class="todo__Buttons">
-            <button class="todo__DoneButton">
-                <i class="fas fa-check"></i>
-            </button>
-            <button class="todo__TrashButton">
-                <i class="fas fa-trash"></i>
-            </button>
+            <span class="todo__ButtonsContent">
+                <button class="todo__DoneButton">
+                     <i class="fas fa-check"></i>
+                </button>
+                <button class="todo__TrashButton">
+                    <i class="fas fa-trash"></i>
+                 </button>
+            </span>
          </li>
         `;
     const taskElement = document.querySelector(".todo__List");
@@ -133,11 +137,9 @@ let hideTasksDone = false;
         addNewTask(newContent)  
         render()
     }
-
     const init = () => {
         render()
         const form = document.querySelector(".todo__Form");
         form.addEventListener("submit",onFormSubmit)  
     }
-
 init();
